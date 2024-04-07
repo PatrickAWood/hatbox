@@ -1,0 +1,17 @@
+# standard
+runtime: java17
+env: standard
+# flex
+#runtime: java
+#env: flex
+runtime_config:
+  operating_system: ubuntu22
+  runtime_version: 17
+env_variables:
+  SPRING_PROFILES_ACTIVE: "gcp-h2"
+  JAVA_USER_OPTS: '-Dspring.profiles.active=gcp-h2'
+handlers:
+  - url: /.*
+    script: this field is required, but ignored
+manual_scaling:
+  instances: 1
