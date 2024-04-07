@@ -1,0 +1,10 @@
+To run locally with local database:
+mvn spring-boot:run -P local-<db> -Dspring-boot.run.profiles=local-<db>
+where <db> is h2 or mysql
+
+To run locally with GCP database:
+mvn spring-boot:run -P gcp-mysql -Dspring-boot.run.profiles=gcp-mysql
+
+To deploy to GCP:
+mvn clean package appengine:deploy -P gcp-<db> -Dspring-boot.run.profiles=gcp-<db> -DskipTests=true -DcloudSdkPath="$(gcloud --format='value(installation.sdk_root)' info)"
+where <db> is h2 or mysql (need also to specify matching profile in app.yaml under env_variables)
